@@ -370,7 +370,6 @@ export default {
           walletErrorText: '',
           mints: [],
         });
-        console.log('onAddMore', formData)
       }
 
       //disable button if we can't add more
@@ -404,8 +403,6 @@ export default {
       formData[index].collection = name;
       formData[index].quantityMax = amount;
       formData[index].quantityDescription = `max ${amount}`;
-
-      console.log('onchange', name, collection, amount)
     })
     const onInput = ((index) => {
       return formData[index].walletErrorText = ''
@@ -434,12 +431,9 @@ export default {
         delete form.quantityMax;
         delete form.walletErrorText;
       });
-
-      console.log('formDataToSend:', JSON.stringify(formData, null, 2))
     })
     const init = (() => {
       makeCollections();
-      console.log('init', formData)
       formData[0].collection = collections[0].collection;
       formData[0].selectedCollection = collections[0].collection;
     })
