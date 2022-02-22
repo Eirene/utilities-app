@@ -2,7 +2,7 @@
   <div class="min-h-screen flex flex-col">
     <Nav />
     <main>
-      <div class="container mx-auto pt-10">
+      <div class="mx-auto py-10" :class="($route.name !== 'Trello') ? 'container' : 'px-8'">
         <router-view />
       </div>
     </main>
