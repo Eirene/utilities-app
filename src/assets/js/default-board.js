@@ -1,4 +1,4 @@
-const uuid = (() => { return Math.random().toString(16).slice(2) });
+import { uuid } from "./trelloUtils";
 
 export default {
     columns: [
@@ -12,13 +12,13 @@ export default {
                     userAssigned: null
                 },
                 {
-                    description: '',
+                    description: 'todo',
                     name: 'second task',
                     id: uuid(),
                     userAssigned: null
                 },
                 {
-                    description: '',
+                    description: 'todo',
                     name: 'and third',
                     id: uuid(),
                     userAssigned: null
@@ -29,7 +29,7 @@ export default {
             name: 'in-progress',
             tasks: [
                 {
-                    description: '',
+                    description: 'in-progress',
                     name: 'first task',
                     id: uuid(),
                     userAssigned: null
@@ -40,7 +40,7 @@ export default {
             name: 'done',
             tasks: [
                 {
-                    description: '',
+                    description: 'done',
                     name: 'first task',
                     id: uuid(),
                     userAssigned: null

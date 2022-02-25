@@ -1,49 +1,48 @@
 <script setup>
-import { computed } from "vue";
+import { ref, computed } from "vue";
 import { useStore } from "vuex";
 import { useRoute, useRouter } from 'vue-router';
+import TrelloColumn from "../components/TrelloColumn.vue";
 
 const store = useStore();
 const router = useRouter();
 const route = useRoute();
+const board = store.state.trello.board;
+const newColumnName = ref('');
 
 const isTaskOpen = computed(() => {
   return route.name === 'task'
 });
+
 const closeOpenTask = () => {
   return router.push({name: 'Trello'})
 };
 
-const goToTask = ((task) => {
-  router.push({name: 'task', params: {id: task.id}})
+const createColumn = (() => {
+  store.commit('trello/CREATE_COLUMN', {
+    name: newColumnName.value
+  })
+
+  newColumnName.value = ''
 })
 
-const board = store.state.trello.board;
 </script>
 
 <template>
   <pre>In progress</pre>
   <div class="flex items-start overflow-x-auto text-gray-800">
-    <div class="columns" v-for="(column, $columnIndex) in board.columns" :key="$columnIndex">
-      <div class="flex items-center mb-2 font-bold text-cyan-50">{{ column.name }}</div>
-      <div
-          class="task"
-          v-for="(task, $taskIndex) in column.tasks"
-          :key="$taskIndex"
-          @click="goToTask(task)"
-      >
-        <span class="w-full flex-no-shrink font-bold">{{ task.name }}</span>
-        <p v-if="task.description"
-            class="w-full flex-no-shrink mt-1 text-sm">
-          {{ task.description }}
-        </p>
-      </div>
-      <input type="text" placeholder="+ Enter new task" class="new-task">
-    </div>
+    <trello-column :column="column"
+                   :columnIndex="$columnIndex"
+                   v-for="(column, $columnIndex) in board.columns"
+                   :key="$columnIndex">
+    </trello-column>
 
     <div class="columns">
       <div>
-        <input type="text" class="new-column" placeholder="New Column Name">
+        <input type="text"
+               v-model="newColumnName"
+               @keyup.enter="createColumn"
+               class="new-column" placeholder="New Column Name">
       </div>
     </div>
 
@@ -58,6 +57,7 @@ const board = store.state.trello.board;
 <style lang="scss">
 .columns{
   @apply bg-cyan-400 p-2 mr-4 text-left shadow rounded w-80;
+  min-width: 20rem;
 }
 .task {
   @apply flex items-center flex-wrap shadow mb-2 p-2 rounded bg-white no-underline hover:cursor-pointer;
