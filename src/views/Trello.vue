@@ -29,7 +29,6 @@ const createColumn = (() => {
 </script>
 
 <template>
-  <pre>In progress</pre>
   <div class="flex items-start overflow-x-auto text-gray-800">
     <trello-column :column="column"
                    :columnIndex="$columnIndex"

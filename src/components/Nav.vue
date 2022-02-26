@@ -53,11 +53,12 @@
       </div>
 
       <div>
-        <img
-          class="h-10 w-10 rounded-full"
-          src="https://avatars.githubusercontent.com/u/1826433?v=4"
-          alt=""
-        />
+        <a href="https://github.com/Eirene">
+          <img
+              class="h-10 w-10 rounded-full"
+              src="https://avatars.githubusercontent.com/u/1826433?v=4"
+              alt="github.com/Eirene" />
+        </a>
       </div>
     </div>
   </header>
