@@ -3,12 +3,19 @@ import { ref, computed } from "vue";
 import { useStore } from "vuex";
 import { useRoute, useRouter } from 'vue-router';
 import TrelloColumn from "../components/TrelloColumn.vue";
+import { CheckCircleIcon } from "@heroicons/vue/solid";
 
 const store = useStore();
 const router = useRouter();
 const route = useRoute();
 const board = store.state.trello.board;
 const newColumnName = ref('');
+
+const ulText = [
+    'create new column, new task',
+    'update task name and description',
+    'drag & drop tasks and columns',
+]
 
 const isTaskOpen = computed(() => {
   return route.name === 'task'
@@ -29,6 +36,17 @@ const createColumn = (() => {
 </script>
 
 <template>
+  <div class="text-center mb-4">
+    <div class="inline-block">
+      <p class="mb-2 text-sm text-gray-500">You can:</p>
+      <ul class="text-sm text-gray-500">
+        <li class="my-2 flex" v-for="(text, index) in ulText" :key="index">
+          <CheckCircleIcon class="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400" aria-hidden="true" />
+          {{ text }}
+        </li>
+      </ul>
+    </div>
+  </div>
   <div class="flex items-start overflow-x-auto text-gray-800">
     <trello-column :column="column"
                    :columnIndex="$columnIndex"

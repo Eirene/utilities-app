@@ -56,7 +56,7 @@
                   class="inline-flex items-center px-6 py-3 text-base font-medium
                   rounded-md shadow-sm
                   focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500
-                  text-cyan-50 bg-gradient-to-r from-cyan-500 to-sky-500
+                  text-cyan-50 bg-gradient-to-r from-cyan-400 to-sky-500
                   hover:from-sky-500 hover:to-cyan-500"
                   :class="addMoreDisabled ? 'disabled:opacity-50' : '' "
           >
