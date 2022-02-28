@@ -5,6 +5,7 @@ import FileUpload from "../components/FileUpload.vue";
 import Collections2Wallet from "../components/Collections2Wallet.vue";
 import MultiSelect from "../components/MultiSelect.vue";
 import GithubSearch from "../components/GithubSearch.vue";
+import GrandForm from "../components/GrandForm.vue";
 
 const multiSelect = ref(null);
 const multiSelectOptions = ["Batman", "Robin", "Joker"];
@@ -19,4 +20,5 @@ defineExpose({
   <github-search />
   <multi-select v-model="multiSelect" :items="multiSelectOptions"></multi-select>
   <file-upload />
+  <grand-form />
 </template>

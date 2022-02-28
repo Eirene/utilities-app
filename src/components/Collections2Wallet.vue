@@ -1,7 +1,7 @@
 <template>
   <div class="text-center mx-auto max-w-2xl py-4 mb-12">
     <form action="" @submit.prevent="formSubmit">
-        <div class="my-4 py-4 px-6 bg-sky-100 rounded-2xl text-sky-900"
+        <div class="my-4 py-4 px-6 bg-cyan-100 rounded-2xl text-sky-900"
              v-for="(form, index) in formData" :key="index">
           <div class="grid grid-cols-12 gap-4">
             <div class="col-span-12 md:col-span-5">
