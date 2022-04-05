@@ -2,6 +2,7 @@ import { createStore } from "vuex";
 
 import notify from "./notify";
 import trello from "./trello";
+import todo from "./todo";
 
 export default createStore({
   state: {},
@@ -10,5 +11,6 @@ export default createStore({
   modules: {
     notify,
     trello,
+    todo,
   },
 });

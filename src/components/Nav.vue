@@ -69,6 +69,7 @@ const links = [
   { name: "Components", href: "/", current: false },
   { name: "Notify", href: "/notify", current: false },
   { name: "Trello", href: "/trello", current: false },
+  { name: "Pages", href: "/pages", current: false },
 ];
 
 export default {
