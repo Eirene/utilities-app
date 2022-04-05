@@ -1,4 +1,6 @@
 <script setup>
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/solid';
+
 defineProps({
   meta: Object,
 })
@@ -31,7 +33,11 @@ defineEmits(['pageClickEvent'])
       </div>
       <div>
         <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
-          <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+          <a href="#"
+             @click.prevent="$emit('pageClickEvent', meta.current_page - 1)"
+             class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+             :class="meta.current_page === 1 ? 'opacity-50' : ''"
+          >
             <span class="sr-only">Previous</span>
             <ChevronLeftIcon class="h-5 w-5" aria-hidden="true" />
           </a>
@@ -47,7 +53,11 @@ defineEmits(['pageClickEvent'])
           </a>
 
 <!--          <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700"> ... </span>-->
-          <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+          <a href="#"
+             @click.prevent="$emit('pageClickEvent', meta.current_page + 1)"
+             class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+             :class="meta.current_page === meta.last_page ? 'opacity-50' : ''"
+          >
             <span class="sr-only">Next</span>
             <ChevronRightIcon class="h-5 w-5" aria-hidden="true" />
           </a>
@@ -57,16 +67,3 @@ defineEmits(['pageClickEvent'])
   </div>
   <p>{{ meta }}</p>
 </template>
-
-<script>
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/solid'
-
-export default {
-  components: {
-    ChevronLeftIcon,
-    ChevronRightIcon,
-  },
-}
-</script>
-
-

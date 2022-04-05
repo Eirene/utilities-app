@@ -13,18 +13,24 @@ const meta = reactive({
   current_page: 1,
   from: 1,
   to: 5,
-  last_page: 1,
   per_page: 5,
-  total: 0,
+  total: 5,
 });
+
+meta.last_page = meta.total / meta.per_page;
+
+const filterList = ((list) => {
+  return list.filter((item => item.id >= meta.from && item.id <= meta.to))
+})
 
 const loadTodoList = (() => {
   loading.value = true;
   axios
-    .get("https://jsonplaceholder.typicode.com/todos?userId=1")
+    // .get("https://jsonplaceholder.typicode.com/todos?userId=1")
+    .get("https://jsonplaceholder.typicode.com/todos")
     .then((response) => {
       let listAll = response.data;
-      let listFiltered = listAll.filter((item => item.id >= meta.from && item.id <= meta.to));
+      let listFiltered = filterList(listAll);
 
       meta.total = listAll.length;
       meta.last_page = listAll.length/meta.per_page;
@@ -40,17 +46,15 @@ const loadTodoList = (() => {
     });
 });
 
-const pageClick = ((page) => {
+const getTodoList = ((page = 1) => {
+  if (page <= 0 || page > meta.last_page) return
   meta.current_page = page;
+  store.dispatch('setTodoFiltered', filterList(store.state.todo.todo));
+})
+
+watch(meta, () => {
   meta.from = (meta.per_page * (meta.current_page - 1)) + 1;
   meta.to = (meta.from + meta.per_page) - 1;
-});
-
-watch(meta, (meta) => {
-  let fromStore = store.state.todo.todo;
-  let listFilteredUpdate = fromStore.filter((item => item.id >= meta.from && item.id <= meta.to));
-
-  store.dispatch('setTodoFiltered', listFilteredUpdate);
 })
 
 onMounted(() => {
@@ -70,6 +74,6 @@ onMounted(() => {
 
     <todo-table v-else :todoList="todoListFiltered" />
 
-    <app-pagination :meta="meta" @pageClickEvent="pageClick" />
+    <app-pagination :meta="meta" @pageClickEvent="getTodoList" />
   </div>
 </template>
