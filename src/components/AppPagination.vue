@@ -2,6 +2,7 @@
 defineProps({
   meta: Object,
 })
+defineEmits(['pageClickEvent'])
 </script>
 
 <template>
@@ -15,15 +16,15 @@ defineProps({
         <p class="text-sm text-gray-700">
           Showing
           {{ ' ' }}
-          <span class="font-medium">1</span>
+          <span class="font-medium">{{ meta.from }}</span>
           {{ ' ' }}
           to
           {{ ' ' }}
-          <span class="font-medium">10</span>
+          <span class="font-medium">{{ meta.to }}</span>
           {{ ' ' }}
           of
           {{ ' ' }}
-          <span class="font-medium">97</span>
+          <span class="font-medium">{{ meta.total }}</span>
           {{ ' ' }}
           results
         </p>
@@ -35,9 +36,8 @@ defineProps({
             <ChevronLeftIcon class="h-5 w-5" aria-hidden="true" />
           </a>
 
-          <!-- Current: "", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
-
           <a v-for="(page, index) in meta.last_page" :key="index"
+            @click.prevent="$emit('pageClickEvent', page)"
             href="#"
             aria-current="page"
             class="relative inline-flex items-center px-4 py-2 border text-sm font-medium"
