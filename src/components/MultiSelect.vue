@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center mx-auto max-w-xl p-4 mb-12">
+  <div class="text-center mx-auto max-w-xl mb-12">
     <p class="text-sm text-gray-500 mb-2">MultiSelect: {{ multiselectValue }}</p>
     <Multiselect v-model="multiselectValue" mode="tags" :options="options" />
   </div>

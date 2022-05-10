@@ -1,29 +1,8 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
   <header class="text-gray-600 bg-blue-50 body-font">
-    <div
-      class="
-        container
-        mx-auto
-        flex flex-wrap
-        p-5
-        flex-col
-        md:flex-row
-        items-center
-        justify-between
-      "
-    >
-      <a
-        class="
-          flex
-          title-font
-          font-medium
-          items-center
-          text-gray-900
-          mb-4
-          md:mb-0
-        "
-      >
+    <div class="container mx-auto flex flex-wrap p-5 items-center justify-between">
+      <a class="inline-flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -41,24 +20,25 @@
         <span class="ml-3 text-xl">Utilities App</span>
       </a>
 
-      <div class="flex">
-        <router-link
-          v-for="link in links"
-          :key="link.name"
-          :to="link.href"
-          class="text-gray-900 px-4 pt-1 font-medium"
-        >
-          {{ link.name }}
-        </router-link>
-      </div>
-
-      <div>
-        <a href="https://github.com/Eirene">
+      <div class="inline-flex md:order-3">
+        <a href="https://isorokina.com/" target="_blank">
           <img
               class="h-10 w-10 rounded-full"
               src="https://avatars.githubusercontent.com/u/1826433?v=4"
-              alt="github.com/Eirene" />
+              alt="Irina Sorokina UI/UX Web Developer" />
         </a>
+      </div>
+
+      <div class="flex mt-1">
+        <router-link
+          v-for="(link, index) in links"
+          :key="link.name"
+          :to="link.href"
+          class="text-gray-900 font-medium hover:text-indigo-400"
+          :class="{ 'mr-8': index + 1 !== links.length }"
+        >
+          {{ link.name }}
+        </router-link>
       </div>
     </div>
   </header>
