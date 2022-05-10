@@ -41,7 +41,7 @@
         <span class="ml-3 text-xl">Utilities App</span>
       </a>
 
-      <div class="hidden sm:flex">
+      <div class="flex">
         <router-link
           v-for="link in links"
           :key="link.name"

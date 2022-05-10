@@ -6,6 +6,10 @@ const search = ref('')
 const error = ref('')
 const repos = ref(null)
 
+const shortName = (name => {
+  return name.toLowerCase().split('-').map(name => name[0]).join('').slice(0, 2);
+})
+
 const getRepos = (() => {
   axios
     .get(`https://api.github.com/users/${search.value}/repos`)
@@ -50,6 +54,9 @@ const getRepos = (() => {
         <!-- item -->
         <div class="mt-2" v-for="repo in repos" :key="repo.id">
           <div class="flex justify-between items-center p-2 border-bottom bg-gray-50 mb-1">
+            <span class="inline-flex items-center justify-center h-6 w-6 rounded-full bg-cyan-400">
+              <span class="text-xs lowercase font-medium leading-none text-white">{{ shortName(repo.name) }}</span>
+            </span>
             <a class="" target="_blank" :href="repo.html_url">{{ repo.name }}</a>
             <span> {{ repo.stargazers_count }} ⭐</span>
           </div>
