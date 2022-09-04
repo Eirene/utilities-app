@@ -3,25 +3,34 @@ import {useStore} from 'vuex';
 
 const store = useStore();
 
-const showAlert = (() => {
+const showAlert = ((color) => {
   store.dispatch('alert/setAlert', {
     text: 'This is my alert!',
-    type: 'green',
+    type: color,
   });
 })
 </script>
 
 <template>
 
-  <div class="text-center mt-8">
+  <div class="flex justify-center gap-x-4 text-center mt-8">
     <button class="inline-flex items-center px-6 py-3 text-base font-medium
                   rounded-md shadow-sm
-                  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500
-                  text-amber-50 bg-gradient-to-r from-amber-400 to-amber-500
-                  hover:from-amber-500 hover:to-amber-500" type="button"
-            @click.prevent="showAlert"
+                  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-transparent
+                  text-white
+                  bg-gradient-to-r from-pink-500 via-rose-500 to-red-500" type="button"
+            @click.prevent="showAlert('red')"
     >
-      Show Alert
+      Show Alert Red
+    </button>
+    <button class="inline-flex items-center px-6 py-3 text-base font-medium
+                  rounded-md shadow-sm
+                  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-transparent
+                  text-white
+                  bg-gradient-to-r from-lime-500 via-green-500 to-emerald-500" type="button"
+            @click.prevent="showAlert('green')"
+    >
+      Show Alert Green
     </button>
   </div>
 </template>

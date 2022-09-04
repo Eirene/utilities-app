@@ -52,5 +52,8 @@ export default {
         }, options.time);
       }, options.delay);
     },
+    closeAlert({ commit }){
+      commit('SET_ALERT', null);
+    }
   },
 };
