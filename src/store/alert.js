@@ -9,32 +9,29 @@ export default {
   namespaced: true,
 
   state: {
-    alert: null,
-    text: null,
-    type: null,
+    alert: {
+      isOpen: false,
+      text: null,
+      type: null,
+    }
   },
 
   getters: {
     getAlert(state) {
       return state.alert;
     },
-    getAlertType(state) {
-      return state.type;
-    },
-    getAlertText(state) {
-      return state.text;
-    },
   },
 
   mutations: {
-    SET_ALERT(state, text) {
-      state.alert = text;
+    SET_ALERT(state, options) {
+      state.alert.isOpen = true;
+      state.alert.type = options.type;
+      state.alert.text = options.text;
     },
-    SET_ALERT_TYPE(state, text) {
-      state.type = text;
-    },
-    SET_ALERT_TEXT(state, text) {
-      state.text = text;
+    CLOSE_ALERT(state) {
+      state.alert.isOpen = false;
+      state.alert.type = null;
+      state.alert.text = null;
     },
   },
 
@@ -43,17 +40,16 @@ export default {
       options = { ...defaults, ...options };
 
       setTimeout(() => {
-        commit('SET_ALERT', options.text);
-        commit('SET_ALERT_TEXT', options.text);
-        commit('SET_ALERT_TYPE', options.type);
+        commit('SET_ALERT', options);
 
         setTimeout(() => {
-          commit('SET_ALERT', null);
+          commit('CLOSE_ALERT', null);
         }, options.time);
       }, options.delay);
     },
+
     closeAlert({ commit }){
-      commit('SET_ALERT', null);
+      commit('CLOSE_ALERT', null);
     }
   },
 };
