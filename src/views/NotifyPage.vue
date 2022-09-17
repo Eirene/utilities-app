@@ -2,7 +2,7 @@
   <div class="max-w-lg mx-auto bg-white shadow overflow-hidden rounded-md py-2">
     <div class="my-2 mx-4 flex justify-between items-center">
       <h3 class="py-2 text-xl font-medium">Notify App</h3>
-      <RefreshIcon
+      <ArrowPathIcon
         @click="getNotifyLazy"
         class="cursor-pointer h-5 w-5 text-blue-500"
       />
