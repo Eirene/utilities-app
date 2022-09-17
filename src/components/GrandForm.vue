@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { CheckCircleIcon } from "@heroicons/vue/solid";
+import { CheckCircleIcon } from "@heroicons/vue/24/solid";
 import AppInput from "./AppInput.vue";
 
 const grandForm = ref('');

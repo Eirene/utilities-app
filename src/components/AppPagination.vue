@@ -1,5 +1,5 @@
 <script setup>
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/solid';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/24/solid';
 
 defineProps({
   meta: Object,

@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import { TrashIcon } from "@heroicons/vue/outline";
+import { TrashIcon } from "@heroicons/vue/24/outline";
 
 const filelist = ref([]);
 const inputFile = ref(null)

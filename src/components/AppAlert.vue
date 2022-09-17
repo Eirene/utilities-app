@@ -1,5 +1,5 @@
 <script setup>
-import {CheckCircleIcon, InformationCircleIcon, XCircleIcon, XIcon} from '@heroicons/vue/solid';
+import {CheckCircleIcon, InformationCircleIcon, XCircleIcon, XMarkIcon} from '@heroicons/vue/24/solid';
 import {useStore} from 'vuex';
 import {computed} from 'vue';
 
@@ -43,7 +43,7 @@ const closeAlert = (() => {
                 @click="closeAlert"
             >
               <span class="sr-only">Dismiss</span>
-              <XIcon aria-hidden="true" class="h-5 w-5"/>
+              <XMarkIcon aria-hidden="true" class="h-5 w-5"/>
             </button>
           </div>
         </div>

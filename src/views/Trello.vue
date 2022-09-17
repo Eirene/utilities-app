@@ -3,7 +3,7 @@ import { ref, computed } from "vue";
 import { useStore } from "vuex";
 import { useRoute, useRouter } from 'vue-router';
 import TrelloColumn from "../components/TrelloColumn.vue";
-import { CheckCircleIcon } from "@heroicons/vue/solid";
+import { CheckCircleIcon } from "@heroicons/vue/24/solid";
 
 const store = useStore();
 const router = useRouter();

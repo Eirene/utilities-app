@@ -23,12 +23,12 @@ import axios from "axios";
 import { mapGetters } from "vuex";
 import Notify from "../components/Notify.vue";
 
-import { RefreshIcon } from "@heroicons/vue/outline";
+import { ArrowPathIcon } from "@heroicons/vue/24/outline";
 
 export default {
   components: {
     Notify,
-    RefreshIcon,
+    ArrowPathIcon,
   },
   data: () => {
     return {
