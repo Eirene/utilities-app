@@ -1,10 +1,10 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import path from 'path'
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import { fileURLToPath, URL } from "node:url";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '',
+  base: "/utilities-app/",
   plugins: [vue()],
   server: {
     // host: true,
@@ -13,11 +13,8 @@ export default defineConfig({
     // }
   },
   resolve: {
-    alias: [
-      {
-        find: '@bg',
-        replacement: path.resolve(__dirname, 'src')
-      }
-    ]
+    alias: {
+      "@bg": fileURLToPath(new URL("./src", import.meta.url)),
+    },
   },
-})
+});

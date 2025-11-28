@@ -80,7 +80,7 @@ const createColumn = (() => {
   @apply flex items-center flex-wrap shadow mb-2 p-2 rounded bg-white no-underline hover:cursor-pointer;
 }
 [type='text'].new-column{
-  @apply block w-full rounded border-0 shadow p-2 rounded bg-white no-underline
+  @apply block w-full border-0 shadow p-2 rounded bg-white no-underline
   focus:border-transparent focus:shadow-transparent focus:ring-0;
 }
 [type='text'].new-task{
